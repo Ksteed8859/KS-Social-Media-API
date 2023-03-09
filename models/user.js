@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const thoughtSchema = require('./Thoughts');
 
 // Schema to create User model
 const userSchema = new Schema(
@@ -15,6 +16,7 @@ const userSchema = new Schema(
       unique: [true, 'This email address is already in use'],
       validate: validateEmail,
     },
+    thoughts: [thoughtSchema],
   },
   {
     toJSON: {
