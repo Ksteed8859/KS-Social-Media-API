@@ -5,22 +5,32 @@ const thoughtSchema = new Schema(
   {
     thoughtText: {
       type: String,
-      required: [true, 'Thought cannot be empty'],
-      max_length: [280, 'Thought is too long. Delete some characters'],
-      min_length: [1, 'Thought cannot be empty']
+      required: [true, 'This field cannot be empty'],
+      max_length: [280, 'Max of 280 characters. Delete some characters and try again.'],
+      min_length: [1, 'This field cannot be empty']
     },
     createdAt: {
       type: Date,
       default: Date.now,
     
     },
+    username: {
+      type: String,
+      required: true
+    },
+    reactions: [reactionSchema]
   },
   {
     toJSON: {
-      getters: true,
+      virtuals: true,
     },
+    id: false
   }
 );
+
+thoughtSchema.virtual('reactionCount').get(function () {
+  return this.reactions.length;
+});
 
 const Thought = model('thought', thoughtSchema);
 
