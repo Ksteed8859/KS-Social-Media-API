@@ -85,7 +85,7 @@ module.exports = {
             { runValidators: true, new: true }
         )
         .then((thought) =>
-        !thought
+            !thought
             ? res.status(404).json({ message: 'No thought with that ID' })
             : res.json(thought)
         )

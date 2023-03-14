@@ -21,10 +21,12 @@ router.route('/:thoughtId')
     .delete(deleteThought);
 
 // /api/thoughts/:thoughtsId/reactions
+// DOES NOT WORK
 router.route('/:thoughtsId/reactions')
     .post(addReaction);
 
 // /api/thoughts/:thoughtsId/reactions/:reactionsId
+// DOES NOT WORK
 router.route('/:thoughtsId/reactions/:reactionsId')
     .delete(deleteReaction);
 
