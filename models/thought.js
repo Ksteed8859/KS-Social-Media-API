@@ -1,3 +1,4 @@
+const reactionSchema = require('./Reaction')
 const { Schema, model } = require('mongoose');
 
 // Schema to create Thought model
