@@ -65,7 +65,7 @@ module.exports = {
     //Update a thought
     updateThought(req, res) {
         Thought.findOneAndUpdate(
-            { thoughts: req.params.thoughtId },
+            { _id: req.params.thoughtId },
             { $set: req.body },
             { runValidators: true, new: true }
         )
@@ -85,7 +85,7 @@ module.exports = {
             { runValidators: true, new: true }
         )
         .then((thought) =>
-        !thought
+            !thought
             ? res.status(404).json({ message: 'No thought with that ID' })
             : res.json(thought)
         )
